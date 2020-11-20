@@ -1,0 +1,81 @@
+---
+title: "Incarceration Report"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+source("analysis.R")
+library("knitr")
+options(scipen = 999) #disable scientific notation formatting
+```
+
+## Overview
+This is a brief report regarding incarceration trends in the United States
+between 1970 and 2018 using Vera Institute's incarceration data set
+([source](https://github.com/vera-institute/incarceration-trends)). The
+variables that my analysis primarily focuses on are different measures of 
+total jail population (different races), along with the corresponding jail
+population rates. I also take a look at jail capacity and total jail
+populations. 
+
+## Summary Information
+Here, I just chose a brief list of values that I personally was interested 
+in finding. Just to be clear, there isn't any particular pattern or order to 
+the information presented here; just things I was curious about. 
+
+The data reveals that the county and state with the largest Native American
+jail population in 2016 is `r place_top_na_jail_pop_2016`, 
+with a population of `r top_native_jail_pop`. The year with the most overall
+prison admissions was `r year_most_prison_adm` at 
+`r round(num_prison_adm_largest_year, 0)` admissions. The average number of 
+Black prisoners per prison in 2016 was `r round(avg_black_prison_pop_2016, 0)`. 
+Finally, the total change in U.S prison populations from 2010 to 2018 is about
+`r round(prison_pop_change_2000_to_2010, 0)` prisoners.
+
+## Jail Incarceration Rate per Year of Top 5 Louisiana Counties
+```{r, echo = FALSE, message=FALSE}
+trend_plot
+```
+
+To clarify, the "Top 5 Louisiana Counties" are the top 5 counties by average
+jail population over the time-horizon of the dataset (1970-2018). I included
+this chart because I have often heard of Louisiana as a hotspot for crime in the 
+U.S, and wanted to know more about the specific counties. Here are some of the 
+patterns that emerged. Four of the five trend lines showed growth since
+1980 before plateauing off and declining at around 2010. Particularly, the 
+Orleans Parish saw dramatic increase in jail incarceration rate since 1980,
+before rapidly declining in 2000. A possible contributor to the rapid decline
+includes criminal justice reforms outlined in this 
+[article](https://tinyurl.com/y3352pd5). Finally, Ouachita Parish is 
+the outlier, with continued increases in jail rate, and no marked decline.  
+
+## Jail Capacity versus Total Jail Population (2018)
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+comparison_plot
+```
+
+Although the results of the comparison may be mostly as expected, the chart
+confirms intuition with data. One characteristic that good data 
+scientists have is being skeptical about intuition -- and that's why 
+why I created the chart. I wanted to see how close the relationship between
+jail capacity and corresponding jail population was. As you can see,
+the correlation is very strong and clearly linear. Particularly, the data
+indicates that most jails are used nearly to capacity. This finding conforms
+to news reports that we often hear about overcrowding of jails in the U.S. 
+Another somewhat expected outcome demonstrated by the chart is that the 
+larger the jail capacity the more likely for it to be located in a a more
+urban setting.
+
+## Proportion of Blacks in Jail Populations by State (2018)
+```{r, echo = FALSE, message=FALSE}
+map_plot
+```
+
+I included this chart to demonstrate the disproportionate population of 
+Black/African Americans in U.S jails. Particularly the chart reveals that 
+many states in the South, such as Alabama, Georgia, Mississippi, and Louisiana 
+report average jail populations of 60% Black or greater. On the other hand,
+the proportion of black people in the general population of these states 
+generally hover between 25 to 30 percent. Therefore, Blacks are 
+over-represented in jail populations for these states by two times
+or more.
