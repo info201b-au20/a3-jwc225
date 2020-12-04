@@ -165,9 +165,4 @@ map_plot <- ggplot(state_shape) +
       "Proportion of Blacks in Jail Populations by State (2018)",
     fill = "% Black Jail Population"
   ) +
-  blank_theme
-
-
-
-county_shape <- map_data("county") %>%
-  unite(polyname, subregion, region, sep = ", ")
+  blank_themes
