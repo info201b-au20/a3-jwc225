@@ -165,4 +165,4 @@ map_plot <- ggplot(state_shape) +
       "Proportion of Blacks in Jail Populations by State (2018)",
     fill = "% Black Jail Population"
   ) +
-  blank_themes
+  blank_theme
